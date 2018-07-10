@@ -24,8 +24,7 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback",
-      proxy: true
+      callbackURL: "/auth/google/callback"
     },
     //called when the user is sent back to the server
     function(accessToken, refreshToken, profile, done) {
