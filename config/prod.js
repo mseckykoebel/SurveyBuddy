@@ -6,6 +6,5 @@ module.exports = {
   mongoURI: process.env.MONGO_URI,
   cookieKey: process.env.COOKIE_KEY,
   googleRedirectURI:
-    "
-https://warm-plains-64795.herokuapp.com/auth/google/callback"
+    "https://warm-plains-64795.herokuapp.com/auth/google/callback"
 };
