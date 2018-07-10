@@ -7,12 +7,12 @@ const User = mongoose.model("users"); // model class
 // creates new instance of the passport strategy via an object, give to G.strat
 
 ////////
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
   done(null, user.id); // done is a callback after we have done work
 });
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id).then(function(user) {
+passport.deserializeUser((id, done) => {
+  User.findById(id).then(user => {
     done(null, user);
   });
 });
