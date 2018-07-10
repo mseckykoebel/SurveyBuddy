@@ -1,14 +1,12 @@
-const passport = require("passport"); // imports the passport library
+const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const keys = require("../config/keys.js"); // keys object, pass to google strat.
 const mongoose = require("mongoose");
+const keys = require("../config/keys");
 
-const User = mongoose.model("users"); // model class
-// creates new instance of the passport strategy via an object, give to G.strat
+const User = mongoose.model("users");
 
-////////
 passport.serializeUser((user, done) => {
-  done(null, user.id); // done is a callback after work has been done
+  done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
@@ -16,9 +14,7 @@ passport.deserializeUser((id, done) => {
     done(null, user);
   });
 });
-/////////
 
-//////// Google Strategy ////////
 passport.use(
   new GoogleStrategy(
     {
@@ -27,7 +23,6 @@ passport.use(
       callbackURL: "/auth/google/callback",
       proxy: true
     },
-    //called when the user is sent back to the server
     async (accessToken, refreshToken, profile, done) => {
       const existingUser = await User.findOne({ googleId: profile.id });
 

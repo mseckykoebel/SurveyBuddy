@@ -1,6 +1,5 @@
-const passport = require("passport"); // need the passport npm module (orig)
+const passport = require("passport");
 
-// route handlers are being placed here
 module.exports = app => {
   app.get(
     "/auth/google",
@@ -8,17 +7,21 @@ module.exports = app => {
       scope: ["profile", "email"]
     })
   );
-  // 2nd route handler
-  app.get("/auth/google/callback", passport.authenticate("google"));
-  // 4th route handler, deals with logging out
+
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google"),
+    (req, res) => {
+      res.redirect("/surveys");
+    }
+  );
+
   app.get("/api/logout", (req, res) => {
-    req.logout(); // attahced to the request object by passport (kills the ID)
-    res.send(req.user); // prove that they are no longer signed in (undefined)
-    /*this presents an emptu page, or undefined, as there is no longer a logged
-    in user. Essentially, it is destroyed by passport*/
+    req.logout();
+    res.redirect("/");
   });
-  // 3rd route handler (get request)
+
   app.get("/api/current_user", (req, res) => {
-    res.send(req.user); // tests to make user if user has already done the flow
+    res.send(req.user);
   });
 };
