@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 const User = mongoose.model("users"); // model class
 // creates new instance of the passport strategy via an object, give to G.strat
 
-passport.authenticate('google', {scope: 'https://www.googleapis.com/auth/plus.login'}));
 ////////
 passport.serializeUser((user, done) => {
   done(null, user.id); // done is a callback after we have done work
