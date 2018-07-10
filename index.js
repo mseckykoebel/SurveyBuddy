@@ -28,3 +28,5 @@ require("./routes/authRoutes")(app);
 const PORT = process.env.PORT || 5000;
 //http://localhost:5000/
 app.listen(PORT);
+
+// this is to fix the app lmao
