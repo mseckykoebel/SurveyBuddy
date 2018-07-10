@@ -24,10 +24,11 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback"
+      callbackURL: "/auth/google/callback",
+      proxy: true
     },
     //called when the user is sent back to the server
-    function(accessToken, refreshToken, profile, done) {
+    (accessToken, refreshToken, profile, done) => {
       // finnd foirst record inside collection with title profileID
       // returns a promise (w/ async. code)
       User.findOne({ googleId: profile.id }).then(existingUser => {
