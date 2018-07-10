@@ -42,7 +42,7 @@ passport.use(
           // saved to the database
           new User({ googleId: profile.id })
             .save()
-            .then(user => done(null, existingUser));
+            .then(user => done(null, user));
           // saves the record (model instance) and saves to the database
         }
       });
