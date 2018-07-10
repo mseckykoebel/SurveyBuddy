@@ -24,8 +24,8 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback",
-      proxy: true
+      callbackURL:
+        "https://warm-plains-64795.herokuapp.com/auth/google/callback"
     },
     //called when the user is sent back to the server
     (accessToken, refreshToken, profile, done) => {
