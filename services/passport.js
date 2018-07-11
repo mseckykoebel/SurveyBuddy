@@ -1,6 +1,6 @@
 const passport = require("passport"); // imports the passport library
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const keys = require("../config/keys.js"); // keys object, pass to google strat.
+const keys = require("../config/keys"); // keys object, pass to google strat.
 const mongoose = require("mongoose");
 
 const User = mongoose.model("users"); // model class
@@ -28,15 +28,16 @@ passport.use(
       proxy: true
     },
     //called when the user is sent back to the server
-    async (accessToken, refreshToken, profile, done) => {
-      const existingUser = await User.findOne({ googleId: profile.id });
-
-      if (existingUser) {
-        return done(null, existingUser);
-      }
-
-      const user = await new User({ googleId: profile.id }).save();
-      done(null, user);
+    (accessToken, refreshToken, profile, done) => {
+      User.findOne({ googleId: profile.id }).then(existingUser => {
+        if (existingUser) {
+          done(null, existingUser);
+        } else {
+          new User({ googleId: profile.id }) // creates mong. model instance
+            .save()
+            .then(user => done(null, user));
+        }
+      });
     }
   )
 );
