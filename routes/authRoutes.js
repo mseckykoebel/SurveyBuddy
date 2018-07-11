@@ -9,7 +9,13 @@ module.exports = app => {
     })
   );
   // 2nd route handler
-  app.get("/auth/google/callback", passport.authenticate("google"));
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google", {
+      successRedirect: "/profile",
+      failureRedirect: "/fail"
+    })
+  );
   // 4th route handler, deals with logging out
   app.get("/api/logout", (req, res) => {
     req.logout(); // attahced to the request object by passport (kills the ID)
