@@ -28,16 +28,18 @@ passport.use(
       proxy: true
     },
     //called when the user is sent back to the server
-    (accessToken, refreshToken, profile, done) => {
-      User.findOne({ googleId: profile.id }).then(existingUser => {
-        if (existingUser) {
-          done(null, existingUser);
-        } else {
-          new User({ googleId: profile.id }) // creates mong. model instance
-            .save()
-            .then(user => done(null, user));
-        }
-      });
+    async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({ googleId: profile.id });
+
+      if (existingUser) {
+        return done(null, existingUser);
+      }
+
+      // creates mong. model instance if the user does not exist
+      const user = await new User({ googleId: profile.id }).save();
+      done(null, user);
     }
   )
 );
+
+// July 20 -> refactored with async/await syntax
