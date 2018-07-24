@@ -51,4 +51,4 @@ function mapStateToProps({ auth }) {
 }
 
 export default connect(mapStateToProps)(Header);
-// with react components, we use className as opposed to class for the rendering
+// with react components, we use className as opposed to class for the rendering and nut
