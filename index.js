@@ -9,11 +9,11 @@ require("./models/User"); // get data from User.js, the model class
 require("./services/passport"); // get data from passport.js (executed when called)
 
 // connecting to mongoDB
-mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI);
 
 const app = express();
 
+app.use(bodyParser.json());
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000, // in miliseconds, 30 days

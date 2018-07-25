@@ -11,6 +11,10 @@ import { FETCH_USER } from "./types";
 export const fetchUser = () => async dispatch => {
   // dispatch an action after this request has been successfully completed
   // returns a promise
+
+  // the response to this is the new user model with the updated number of credits
+  // the header auto-updates becuase this function and the one below it are
+  // both the same
   const res = await axios.get("/api/current_user");
 
   dispatch({ type: FETCH_USER, payload: res.data });

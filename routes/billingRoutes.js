@@ -1,13 +1,17 @@
 // access to the secret key
 const keys = require("../config/keys");
 const stripe = require("stripe")(keys.stripeSecretKey);
+// import the middleware
+const requireLogin = require("../middlewares/requireLogin");
 
 // NOTE: dealing with just the billing authroutes ONLY
 const passport = require("passport"); // need the passport npm module (orig)
 
 module.exports = app => {
   // watch for POST to api/stripe
-  app.post("/api/stripe", async (req, res) => {
+  // this is a POST request
+  // requireLogin is a funciton, and it is not run immedietely
+  app.post("/api/stripe", requireLogin, async (req, res) => {
     // LOGIC TO CREATE AND BILL THE CREDIT CARD
     const charge = await stripe.charges.create({
       amount: 0,
@@ -24,3 +28,5 @@ module.exports = app => {
     res.send(user);
   });
 };
+
+// easy to secure the paths with 
