@@ -26,8 +26,23 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // return a funciton, calling with the express app object
-require('./routes/authRoutes')(app);
-require('./routes/billingRoutes')(app);
+require("./routes/authRoutes")(app);
+require("./routes/billingRoutes")(app);
+
+// make sure that express knows that we are at heroku, and in production
+// node variable made by heroku
+if (process.env.NODE_ENV === "production") {
+  // makes sure heroku handles production well
+  // Express will serve up production assets, such as main.js and main.css file
+  // look into this directory and try to match with what this requst is asking for
+  app.use(express.static("client/build"));
+  // Express will serve up the index.html file if it does not
+  // recognize the route that is on the request
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
