@@ -1,21 +1,22 @@
+//// NOTE: route handlers associated with authentication ONLY
 const passport = require("passport"); // need the passport npm module (orig)
 
 // route handlers are being placed here
 module.exports = app => {
   app.get(
-    "/auth/google",
-    passport.authenticate("google", {
-      scope: ["profile", "email"]
+    '/auth/google',
+    passport.authenticate('google', {
+      scope: ['profile', 'email']
     })
   );
   // 2nd route handler
   app.get(
-    "/auth/google/callback",
-     passport.authenticate("google"), // passpoer middleware
+    '/auth/google/callback',
+    passport.authenticate('google'), // passpoer middleware
      // when a call comes to this function, redirect the person making the req
      // to another route inside the application
      (req, res) => {
-       res.redirect('/surveys'); // redirect to the main homepage!!!! Imp!!!
+       res.redirect('/surveys'); // redirect to the main page
      }
    );
   // 4th route handler, deals with logging out, requests made to this route

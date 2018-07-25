@@ -1,9 +1,9 @@
-const passport = require("passport"); // imports the passport library
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const keys = require("../config/keys"); // keys object, pass to google strat.
-const mongoose = require("mongoose");
+const passport = require('passport'); // imports the passport library
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const keys = require('../config/keys'); // keys object, pass to google strat.
+const mongoose = require('mongoose');
 
-const User = mongoose.model("users"); // model class
+const User = mongoose.model('users'); // model class
 // creates new instance of the passport strategy via an object, give to G.strat
 
 ////////
@@ -24,7 +24,7 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback",
+      callbackURL: '/auth/google/callback',
       proxy: true
     },
     //called when the user is sent back to the server

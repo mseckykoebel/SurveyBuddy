@@ -3,16 +3,15 @@ import { BrowserRouter, Route } from "react-router-dom";
 // given components the ability to use action creators
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import Landing from './Landing';
 
 // Header component
 import Header from "./Header";
+import Landing from "./Landing";
 
 // dummy components working nicely with react-dom
 // Route definitions are all set for each of the different routes
 const Dashboard = () => <h2>Dashboard</h2>;
 const SurveyNew = () => <h2>SurveyNew</h2>;
-
 
 // add container to the div so the page looks less shitty
 class App extends Component {

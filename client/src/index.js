@@ -4,7 +4,6 @@
 import "materialize-css/dist/css/materialize.min.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reduxThunk from "redux-thunk";
@@ -12,6 +11,7 @@ import reduxThunk from "redux-thunk";
 // Creation of the redux store
 // Import the reducers from the reducers folder
 // In the args of the createStore function, pass the reducers
+import App from "./components/App";
 import reducers from "./reducers";
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
@@ -24,3 +24,6 @@ ReactDOM.render(
 
 // Redux store attached to the react side of the app. by placing the
 // provider tag
+
+console.log("STRIPE KEY IS ", process.env.REACT_APP_STRIPE_KEY);
+console.log("OUR ENVIRONMENT IS ", process.env.NODE_ENV);

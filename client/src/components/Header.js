@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import the link component from react-router-dom
+// import the link components from react-router-dom
 import { Link } from "react-router-dom";
+import Payments from "./Payments";
 
 // class based as I want to place a function inm here responsible for
 // deciding what to render inside the header component
@@ -20,11 +21,15 @@ class Header extends Component {
           </li>
         );
       default:
-        return (
-          <li>
+        return [
+          <li key="1">
+            <Payments />
+          </li>,
+
+          <li key="2">
             <a href="/api/logout">Logout</a>
           </li>
-        );
+        ];
     }
   }
   // if the user is present, send to surveys page. If not, send to the main page '/'
@@ -33,7 +38,7 @@ class Header extends Component {
       <nav>
         <div className="nav-wrapper">
           <Link
-            to={this.props.auth ? "./surveys" : "/"}
+            to={this.props.auth ? "/surveys" : "/"}
             className="left brand-logo"
           >
             SurveyBuddy
