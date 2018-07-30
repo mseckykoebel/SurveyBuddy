@@ -7,11 +7,8 @@ import * as actions from "../actions";
 // Header component
 import Header from "./Header";
 import Landing from "./Landing";
-
-// dummy components working nicely with react-dom
-// Route definitions are all set for each of the different routes
-const Dashboard = () => <h2>Dashboard</h2>;
-const SurveyNew = () => <h2>SurveyNew</h2>;
+import Dashboard from "./Dashboard";
+import SurveyNew from "./surveys/SurveyNew";
 
 // add container to the div so the page looks less shitty
 class App extends Component {
@@ -22,11 +19,12 @@ class App extends Component {
     this.props.fetchUser();
   }
 
+  // container keyword adds a lot of padding
   render() {
     return (
       <div className="container">
         <BrowserRouter>
-          <div>
+          <div className="container">
             <Header />
             <Route exact path="/" component={Landing} />
             <Route exact path="/surveys" component={Dashboard} />

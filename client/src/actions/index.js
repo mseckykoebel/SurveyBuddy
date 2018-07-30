@@ -1,5 +1,6 @@
+// NOTE: all of the action creators
 import axios from "axios";
-import { FETCH_USER } from "./types";
+import { FETCH_USER, FETCH_SURVEYS } from "./types";
 
 // becuase we are making a request, can use the async/await syntax
 
@@ -34,3 +35,22 @@ export const handleToken = token => async dispatch => {
   dispatch({ type: FETCH_USER, payload: res.data });
 };
 // need to hook up the payments.js component
+
+// NOTE: new action creator
+// NOTE: this posts the form values to the backend API
+// passes in the values object, makes a POST request to our server
+
+export const submitSurvey = (history, values) => async dispatch => {
+  const res = await axios.post("/api/surveys", values);
+
+  // redirect to the survey page -> need the history object
+  history.push("/surveys");
+  dispatch({ type: FETCH_USER, payload: res.data });
+};
+
+// gets a list of all of the surveys
+export const fetchSurveys = () => async dispatch => {
+  const res = await axios.get("/api/surveys");
+
+  dispatch({ type: FETCH_SURVEYS, payload: res.data });
+};
