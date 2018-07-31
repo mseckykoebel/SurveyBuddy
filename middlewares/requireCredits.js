@@ -4,7 +4,8 @@ module.exports = (req, res, next) => {
   if (req.user.credits < 1) {
     return res.status(403).send({
       error:
-        "You do not have enough credits to make another survey. Please purchase more to continue."});
+        "You do not have enough credits to make another survey. Please purchase more to continue."
+    });
   }
   // if the user does exist, allow the request to continue to the next middleware
   next();

@@ -14,18 +14,18 @@ import formFields from "./formFields";
 // formValues- > keys contain the name of the fields
 const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
   // rendering the list logic for the "review" page
-  const reviewFields = _.map(formFields, field => {
+  const reviewFields = _.map(formFields, ({ name, label }) => {
     return (
-      <div key={field.name}>
-        <label>{field.label}</label>
-        <div>{formValues[field.name]}</div>
+      <div key={name}>
+        <label>{label}</label>
+        <div>{formValues[name]}</div>
       </div>
     );
   });
 
   return (
     <div>
-      <h5>Please confirm your Entries</h5>
+      <h5>Please confirm your entries</h5>
       {reviewFields}
       <button
         className="yellow darken-4 white-text btn-flat"

@@ -11,9 +11,11 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "webhook": "lt -p 5000 -s absolutelyrandomaintnobodygonguessthissubdomainlmaoooooooooooo"
+    "dev":
+      "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
+    "heroku-postbuild":
+      "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "webhook": "forever webhook.js"
   },
   "author": "",
   "license": "ISC",
@@ -25,7 +27,7 @@
     "express": "^4.16.3",
     "localtunnel": "^1.9.0",
     "lodash": "^4.17.10",
-    "mongoose": "^5.2.2",
+    "mongoose": "^5.2.5",
     "nodemon": "^1.18.0",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",

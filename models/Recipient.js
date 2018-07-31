@@ -2,7 +2,7 @@
 // email and click property, boolean, true or false, if the
 // email has clicked yes or no before
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 // setting up the subdocument

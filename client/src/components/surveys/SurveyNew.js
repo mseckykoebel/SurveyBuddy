@@ -8,16 +8,14 @@ import SurveyFormReview from "./SurveyFormReview";
 
 class SurveyNew extends Component {
   // this is the case with create-react-app, and is the same as setting state
-  state = { showReview: false }; // do not show the component by default
+  state = { showFormReview: false }; // do not show the component by default
 
   // helper method for displaying some page
   renderContent() {
     if (this.state.showFormReview /* is true */) {
       return (
         <SurveyFormReview
-          onCancel={() => {
-            this.setState({ showFormReview: false });
-          }}
+          onCancel={() => this.setState({ showFormReview: false })}
         />
       );
     }
@@ -25,13 +23,13 @@ class SurveyNew extends Component {
     // to display this instead
     return (
       <SurveyForm
-        onSurveySubmit={() => this.setState({ showFormReview: true })} // run after form submitted
+        onSurveySubmit={() => this.setState({ showFormReview: true })}
       />
     );
   }
 
   render() {
-    return <div>{this.renderContent()}</div>; // this runs the render method
+    return <div>{this.renderContent() /*runs the render method*/}</div>;
   }
 }
 

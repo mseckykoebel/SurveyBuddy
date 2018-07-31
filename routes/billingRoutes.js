@@ -5,7 +5,6 @@ const stripe = require("stripe")(keys.stripeSecretKey);
 const requireLogin = require("../middlewares/requireLogin");
 
 // NOTE: dealing with just the billing authroutes ONLY
-const passport = require("passport"); // need the passport npm module (orig)
 
 module.exports = app => {
   // watch for POST to api/stripe
@@ -29,4 +28,4 @@ module.exports = app => {
   });
 };
 
-// easy to secure the paths with 
+// easy to secure the paths with

@@ -3,25 +3,22 @@
 const keys = require("../../config/keys");
 
 module.exports = survey => {
-  // returning  amulti-lin estring, using string templates
+  // returning a multi-line string, using string templates
   return `
     <html>
       <body>
-        <div style="text-align: center">
-          <h3>I'd like your input</h3>
+        <div style="text-align: center;">
+          <h3>I'd like your input!</h3>
           <p>Please answer the following question:</p>
-          <!-- here is the body of the survey -->
           <p>${survey.body}</p>
-            <div>
-              <a href:"${keys.redirectDomain}/api/surveys/${
+          <div>
+            <a href="${keys.redirectDomain}/api/surveys/${
     survey.id
   }/yes">Yes</a>
-            </div>
-            <div>
-              <a href:"${keys.redirectDomain}/api/surveys/${
-    survey.id
-  }/no">No</a>
-            </div>
+          </div>
+          <div>
+            <a href="${keys.redirectDomain}/api/surveys/${survey.id}/no">No</a>
+          </div>
         </div>
       </body>
     </html>

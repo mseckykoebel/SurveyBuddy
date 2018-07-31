@@ -45,7 +45,7 @@ class SurveyForm extends Component {
       <div>
         <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
           {this.renderFields()}
-          <Link className="red btn-flat white-text" to="/surveys">
+          <Link to="/surveys" className="red btn-flat white-text">
             Cancel
           </Link>
           <button type="submit" className="teal btn-flat right white-text">
@@ -57,6 +57,7 @@ class SurveyForm extends Component {
     );
   }
 }
+
 // handleSubmit() is adding some additional props to the survey form
 // one of the forms is handleSubmit!
 // function will be called when the user submits the forms

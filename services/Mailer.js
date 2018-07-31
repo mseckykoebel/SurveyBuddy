@@ -1,9 +1,9 @@
 // another service...like passport lmao
 // NOTE: this sends the emails
 
-const sendgrid = require("sendgrid"); // imports the sendgrid object
+const sendgrid = require('sendgrid'); // imports the sendgrid object
 const helper = sendgrid.mail; // property from sendgrid object, helps make the mailer
-const keys = require("../config/keys");
+const keys = require('../config/keys');
 
 // setting up the mailer class
 // NOTE: similar to the react component
@@ -22,24 +22,25 @@ class Mailer extends helper.Mail {
 
     // represents the sendGrid object were gonna use to communicate the mailer
     // to the sendgrid addPersonalization
-    this.sgAPI = sendgrid(keys.sendGridKey);
+    this.sgApi = sendgrid(keys.sendGridKey);
 
     // who this email appears to be sent from
     // NOTE: helper is given by sendgrid
     this.from_email = new helper.Email("no-reply@surveybuddy.com");
     this.subject = subject;
     // some html to display inside of the email
-    this.body = new helper.Content("text/html", content);
-    // register the body with the mailer
-    this.addContent(this.body); // define this below
-    // enabling click tracking of the responses:
-    this.addClickTracking(); // define this below
-    this.addRecipients(); // define this below
+    this.body = new helper.Content('text/html', content);
     // list of the recipients
     // formatAddress ->
     // who should the email be send off to?!
     // turn each recipient into the
     this.recipients = this.formatAddresses(recipients);
+    // register the body with the mailer
+    this.addContent(this.body); // define this below
+    // enabling click tracking of the responses:
+    this.addClickTracking(); // define this below
+    this.addRecipients(); // define this below
+
   }
 
   // extract the email from recipients
@@ -76,13 +77,13 @@ class Mailer extends helper.Mail {
   // function to communicate and send the entire mailer off to the sendGrid API:
   async send() {
     // sendgrid API request
-    const request = this.sgAPI.emptyRequest({
-      method: "POST",
-      path: "/v3/mail/send",
+    const request = this.sgApi.emptyRequest({
+      method: 'POST',
+      path: '/v3/mail/send',
       body: this.toJSON()
     });
     // on the api object, call the API function, provided my sendGrid API
-    const response = await this.sgAPI.API(request);
+    const response = await this.sgApi.API(request);
     return response;
   }
 }

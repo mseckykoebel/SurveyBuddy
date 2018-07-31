@@ -2,8 +2,7 @@
 // This function does the validation of the emails
 
 // assign shitty characters:
-const re =
-  "/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/";
+const re = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 export default emails => {
   // separate the emails by a comma for em...
@@ -23,5 +22,5 @@ export default emails => {
     return `These emails are invalid: ${invalidEmails}`;
   }
 
-  return null;
+  return;
 };

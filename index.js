@@ -1,16 +1,18 @@
 // Associated with booting/starting the application
 const express = require("express"); // importing in the express ibrary
-const mongoose = require("mongoose"); // importing the mongoDB library
-const cookieSession = require("cookie-session"); // imp. cookieSession library
-const bodyParser = require("body-parser"); // require that body parser thing
-const passport = require("passport"); // tell pp to make use of cookies
 const keys = require("./config/keys"); // require the imp. keys\
-require("./services/passport"); // get data from passport.js (executed when called)
+const mongoose = require("mongoose"); // importing the mongoDB library
+// connecting to mongoDB
+mongoose.Promise = global.Promise;
+mongoose.connect(keys.mongoURI);
 require("./models/User"); // get data from User.js, the model class
 require("./models/Survey"); // get data from the Surveys model class
 
-// connecting to mongoDB
-mongoose.connect(keys.mongoURI);
+const cookieSession = require("cookie-session"); // imp. cookieSession library
+const bodyParser = require("body-parser");
+const passport = require("passport"); // tell pp to make use of cookies
+require("./services/passport"); // get data from passport.js (executed when called)
+
 
 const app = express();
 
@@ -27,23 +29,23 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // return a funciton, calling with the express app object
-require('./routes/authRoutes')(app);
-require('./routes/billingRoutes')(app);
-require('./routes/surveyRoutes')(app);
+require("./routes/authRoutes")(app);
+require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 // make sure that express knows that we are at heroku, and in production
 // node variable made by heroku
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   // makes sure heroku handles production well
   // Express will serve up production assets, such as main.js and main.css file
   // look into this directory and try to match with what this requst is asking for
-  app.use(express.static('client/build'));
+  app.use(express.static("client/build"));
   // Express will serve up the index.html file if it does not
   // recognize the route that is on the request
-  const path = require('path');
+  const path = require("path");
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
 
