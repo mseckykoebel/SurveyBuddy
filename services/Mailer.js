@@ -1,9 +1,9 @@
 // another service...like passport lmao
 // NOTE: this sends the emails
 
-const sendgrid = require('sendgrid'); // imports the sendgrid object
+const sendgrid = require("sendgrid"); // imports the sendgrid object
 const helper = sendgrid.mail; // property from sendgrid object, helps make the mailer
-const keys = require('../config/keys');
+const keys = require("../config/keys");
 
 // setting up the mailer class
 // NOTE: similar to the react component
@@ -29,7 +29,7 @@ class Mailer extends helper.Mail {
     this.from_email = new helper.Email("no-reply@surveybuddy.com");
     this.subject = subject;
     // some html to display inside of the email
-    this.body = new helper.Content('text/html', content);
+    this.body = new helper.Content("text/html", content);
     // list of the recipients
     // formatAddress ->
     // who should the email be send off to?!
@@ -40,7 +40,6 @@ class Mailer extends helper.Mail {
     // enabling click tracking of the responses:
     this.addClickTracking(); // define this below
     this.addRecipients(); // define this below
-
   }
 
   // extract the email from recipients
@@ -78,8 +77,8 @@ class Mailer extends helper.Mail {
   async send() {
     // sendgrid API request
     const request = this.sgApi.emptyRequest({
-      method: 'POST',
-      path: '/v3/mail/send',
+      method: "POST",
+      path: "/v3/mail/send",
       body: this.toJSON()
     });
     // on the api object, call the API function, provided my sendGrid API

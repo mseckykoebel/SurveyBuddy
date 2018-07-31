@@ -17,8 +17,6 @@ const requireCredits = require("../middlewares/requireCredits");
 const Mailer = require("../services/Mailer");
 const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 
-
-
 // the route hander itself
 // required in the order of execution
 // NOTE: req = incoming request object, and res = response object
@@ -43,7 +41,7 @@ module.exports = app => {
 
   // quick response to the user...saying a big ole ty
   app.get("/api/surveys/:surveyId/:choice", (req, res) => {
-    res.send("Thanks for submitting a response!");
+    res.send("Thanks for voting!");
   });
   ////////////////////////
 
