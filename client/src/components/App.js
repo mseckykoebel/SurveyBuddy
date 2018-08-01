@@ -22,7 +22,7 @@ class App extends Component {
   // container keyword adds a lot of padding
   render() {
     return (
-      <div>
+      <div className='container'>
         <BrowserRouter>
           <div className="container">
             <Header />
