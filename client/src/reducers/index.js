@@ -3,11 +3,13 @@ import { combineReducers } from "redux";
 import { reducer as reduxForm } from "redux-form";
 import authReducer from "./authReducer";
 import surveysReducer from "./surveysReducer";
+import { loadingBarReducer } from "react-redux-loading-bar";
 
 // wires together all of the reducers inside of the application
 export default combineReducers({
   // auth piece of state is manufactured by the authReducer!!!!!!!
   auth: authReducer,
   form: reduxForm,
-  surveys: surveysReducer
+  surveys: surveysReducer,
+  loadingBar: loadingBarReducer
 });

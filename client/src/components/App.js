@@ -3,12 +3,14 @@ import { BrowserRouter, Route } from "react-router-dom";
 // given components the ability to use action creators
 import { connect } from "react-redux";
 import * as actions from "../actions";
+import LoadingBar from "react-redux-loading-bar";
 
 // Header component
 import Header from "./Header";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
 import SurveyNew from "./surveys/SurveyNew";
+import Footer from "./Footer"; // NEW FOOTER
 
 // add container to the div so the page looks less shitty
 class App extends Component {
@@ -22,16 +24,20 @@ class App extends Component {
   // container keyword adds a lot of padding
   render() {
     return (
-      <div className='container'>
-        <BrowserRouter>
-          <div className="container">
-            <Header />
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/surveys" component={Dashboard} />
-            <Route path="/surveys/new" component={SurveyNew} />
-          </div>
-        </BrowserRouter>
-      </div>
+      <main className="main">
+        <div>
+          <BrowserRouter>
+            <div className="container">
+              <Header />
+              <LoadingBar />
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/surveys" component={Dashboard} />
+              <Route path="/surveys/new" component={SurveyNew} />
+              <Route exact path="/surveys" component={Footer} />
+            </div>
+          </BrowserRouter>
+        </div>
+      </main>
     );
   }
 }

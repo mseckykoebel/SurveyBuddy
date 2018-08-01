@@ -4,10 +4,14 @@ import SurveyList from "./surveys/SurveyList";
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className="main" href="styles.css" rel="stylesheet" type="text/css">
       <SurveyList />
-      <div className="fixed-action-btn">
-        <Link to="/surveys/new" className="btn-floating btn-large red">
+      <div className="fixed-action-btn-large">
+        <Link
+          to="/surveys/new"
+          className="btn-floating btn-large orange darken-1 pulse"
+          style={{ margin: "10px 5px" }}
+        >
           <i className="material-icons">add</i>
         </Link>
       </div>
