@@ -40,7 +40,7 @@ export const handleToken = token => async dispatch => {
 // NOTE: this posts the form values to the backend API
 // passes in the values object, makes a POST request to our server
 
-export const submitSurvey = (history, values) => async dispatch => {
+export const submitSurvey = (values, history) => async dispatch => {
   const res = await axios.post("/api/surveys", values);
 
   // redirect to the survey page -> need the history object

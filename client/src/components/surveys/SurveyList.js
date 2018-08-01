@@ -40,7 +40,7 @@ class SurveyList extends Component {
 // defina mapStateToProps that pulls in the list of surveys
 
 function mapStateToProps({ surveys }) {
-  return { surveys: surveys };
+  return { surveys };
 }
 
 export default connect(

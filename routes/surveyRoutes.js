@@ -6,10 +6,12 @@ const mongoose = require("mongoose");
 // mongoose model class -> used to create an instance of a survey
 // 1 - create
 // 2 - use the save funciton to save to the database
+
+// get the mongoose model class off of mongoose database
 const Survey = mongoose.model("surveys");
 
 const _ = require("lodash");
-const Path = require("path-parser");
+const Path = require("path-parser").default;
 const { URL } = require("url"); // integrated Node.js system, helps parse URL's
 // require in the middleware that already does this for us
 const requireLogin = require("../middlewares/requireLogin"); // will not be called
@@ -51,13 +53,15 @@ module.exports = app => {
     // extract using the colons, and we tell the Path library this!!!
     // can use p to extract the survey ID and the choice
     const p = new Path("/api/surveys/:surveyId/:choice");
+
     _.chain(req.body) // iterate over req.body array
       .map(({ email, url }) => {
         // use the URl helper to only get the route
         const match = p.test(new URL(url).pathname);
+
         if (match) {
           return {
-            email: email, // NOT event.email
+            email, // NOT event.email
             surveyId: match.surveyId,
             choice: match.choice
           }; // if match was found, return the match object
@@ -109,8 +113,6 @@ module.exports = app => {
       }) // run over every element in the events array
       .value();
 
-    console.log(events);
-
     res.send({});
   });
 
@@ -155,9 +157,9 @@ module.exports = app => {
 
       // send back the updated user model, just like we do when the user pays for something
       res.send(user);
-    } catch (err) {
+    } catch (error) {
       // unprocessable entity, you have done somehting wrong!
-      res.status(422).send(err);
+      res.status(422).send(error);
     }
 
     // after we send the mailer, call save on the survey to save the mailer to the database

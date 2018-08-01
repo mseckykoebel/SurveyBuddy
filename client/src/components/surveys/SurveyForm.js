@@ -4,11 +4,11 @@
 // tells redux form to be in charge, and allows communicatio with the redux store
 // FIELD: rendering any kind of traditional HTML, or showing the user text
 // OR, one of our own, in this case, SurveyField.js!!!!
-import { reduxForm, Field } from "redux-form"; // that cool ting w/ documentation
+import _ from "lodash";
 import React, { Component } from "react";
+import { reduxForm, Field } from "redux-form"; // the cool thing with the documentation
 import { Link } from "react-router-dom";
 import SurveyField from "./SurveyField";
-import _ from "lodash";
 import validateEmails from "../../utils/validateEmails";
 import formFields from "./formFields";
 // {} used for when we are importing a tag

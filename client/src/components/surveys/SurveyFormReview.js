@@ -1,11 +1,12 @@
 // functional Component
 // surveyformreview shows users their form inputs
-import React from "react";
 import _ from "lodash";
+import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
 // get all the different action creators
 import * as actions from "../../actions";
-import { withRouter } from "react-router-dom";
 
 // access the array that is located in surveyForm in order to display the
 // review of all of the content on the page
@@ -28,7 +29,7 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
       <h5>Please confirm your entries</h5>
       {reviewFields}
       <button
-        className="yellow darken-4 white-text btn-flat"
+        className="yellow darken-3 white-text btn-flat"
         onClick={onCancel}
       >
         Back

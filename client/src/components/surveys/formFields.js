@@ -17,7 +17,7 @@ export default [
   },
   {
     label: "Recipient List",
-    name: "emails",
+    name: "recipients",
     noValueError: "Please provide at least one recipient"
   }
 ];
