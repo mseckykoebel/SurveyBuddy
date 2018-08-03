@@ -1,17 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer
-      className="page-footer orange darken-1"
-      style={{
-        position: "absolute",
-        left: "0",
-        bottom: "0",
-        width: "100%"
-      }}
-    >
+    <footer className="page-footer orange darken-1">
       <div className="container">
         <div className="row">
           <div className="col l6 s12">
@@ -29,6 +20,7 @@ const Footer = () => {
                   className="grey-text text-lighten-3"
                   href="https://www.facebook.com/mseckykoebel"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Facebook
                 </a>
@@ -38,6 +30,7 @@ const Footer = () => {
                   className="grey-text text-lighten-3"
                   href="https://www.instagram.com/mseckykoebel/"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Instagram
                 </a>
@@ -47,6 +40,7 @@ const Footer = () => {
                   className="grey-text text-lighten-3"
                   href="https://northwestern.academia.edu/MasonSeckyKoebel"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Academia
                 </a>

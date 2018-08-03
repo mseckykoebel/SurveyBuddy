@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 // given components the ability to use action creators
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import LoadingBar from "react-redux-loading-bar";
+import "./index.css"; 
 
 // Header component
 import Header from "./Header";
@@ -24,20 +24,19 @@ class App extends Component {
   // container keyword adds a lot of padding
   render() {
     return (
-      <main className="main">
-        <div>
-          <BrowserRouter>
-            <div className="container">
-              <Header />
-              <LoadingBar />
+      <div classBame="body">
+        <BrowserRouter>
+          <div className="container">
+            <Header />
+            <div className="main">
               <Route exact path="/" component={Landing} />
               <Route exact path="/surveys" component={Dashboard} />
               <Route path="/surveys/new" component={SurveyNew} />
               <Route exact path="/surveys" component={Footer} />
             </div>
-          </BrowserRouter>
-        </div>
-      </main>
+          </div>
+        </BrowserRouter>
+      </div>
     );
   }
 }
