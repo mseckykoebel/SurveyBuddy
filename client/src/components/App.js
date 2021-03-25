@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 // given components the ability to use action creators
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import "./index.css"; 
+import "./index.css";
 
 // Header component
 import Header from "./Header";
@@ -42,9 +42,6 @@ class App extends Component {
 }
 
 // second arg is all of the action creators we want to wire up
-export default connect(
-  null,
-  actions
-)(App);
+export default connect(null, actions)(App);
 
 // the actions are assigned to the App component as props

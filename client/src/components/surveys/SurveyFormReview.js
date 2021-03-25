@@ -51,15 +51,12 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
 function mapStateToProps(state) {
   return {
     // this is the values of the survey inside the state
-    formValues: state.form.surveyForm.values
+    formValues: state.form.surveyForm.values,
   };
 }
 
 // redirects on the submit
 // knows about the history object, and pass along to the action creator
-export default connect(
-  mapStateToProps,
-  actions
-)(withRouter(SurveyFormReview));
+export default connect(mapStateToProps, actions)(withRouter(SurveyFormReview));
 
 // NOTE: Action creator -> change the data inside of the application

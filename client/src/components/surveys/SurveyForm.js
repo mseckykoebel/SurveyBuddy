@@ -94,5 +94,5 @@ export default reduxForm({
   // feedback so  the user knows that they did the right thing
   validate: validate, // run when the user submits the form (ran automatically)
   form: "surveyForm",
-  destroyOnUnmount: false // NOTE: do not dump the values!!!!!!!!
+  destroyOnUnmount: false, // NOTE: do not dump the values!!!!!!!!
 })(SurveyForm);

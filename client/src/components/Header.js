@@ -30,7 +30,7 @@ class Header extends Component {
           </li>,
           <li key="2">
             <a href="/api/logout">Logout</a>
-          </li>
+          </li>,
         ];
     }
   }
@@ -42,7 +42,7 @@ class Header extends Component {
           <Link
             to={this.props.auth ? "/surveys" : "/"}
             className="left brand-logo"
-            style={{margin: " 0 10px"}}
+            style={{ margin: " 0 10px" }}
           >
             SurveyBuddy
           </Link>

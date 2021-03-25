@@ -10,19 +10,16 @@ class Payments extends Component {
         name="SurveyBuddy"
         description="$1 for a whole 'lotta credits fam"
         amount={100}
-        token={token => this.props.handleToken(token)}
+        token={(token) => this.props.handleToken(token)}
         stripeKey={process.env.REACT_APP_STRIPE_KEY}
       >
-        <button className="btn" >Add Credits</button>
+        <button className="btn">Add Credits</button>
       </StripeCheckout>
     );
   }
 }
 
-export default connect(
-  null,
-  actions
-)(Payments);
+export default connect(null, actions)(Payments);
 
 // the currency is not going to be the same for everything, but we finna stick
 // need to tell stripe the currency and the amount (the default is US dollars)

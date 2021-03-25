@@ -34,5 +34,5 @@ class SurveyNew extends Component {
 }
 
 export default reduxForm({
-  form: "surveyForm" // makes it so cancel actually cancels the form values
+  form: "surveyForm", // makes it so cancel actually cancels the form values
 })(SurveyNew);
